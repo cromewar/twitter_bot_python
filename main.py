@@ -23,17 +23,17 @@ def limit_handeler(cursor):
     
 
 ### Auto Follow back
-def auto_follow_back():
+def auto_follow_back(followers_count):
     '''
-    follows back any follower with more than 100 followers
+    follows back any follower with more than followers_count
     '''
     for follower in limit_handeler(tweepy.Cursor(api.followers).items()):
-        if follower.followers_count > 100:
+        if follower.followers_count > followers_count:
             follower.follow()
 
 def narcissist_bot(search_string, numbersOfTweets):
     '''
-    Search on main user time line for any tweet containig the key word: search_string and puts it in to favorites, also the number of times is limited by numbersOfTweets
+    Search on main user time line for any tweet containig the key word: search_string and puts it in to favorites, also the number of items is limited by numbersOfTweets
     You can put your name as search_string to like any tweet containig your name
     '''
     for tweet in tweepy.Cursor(api.search, search_string).items(numbersOfTweets):
@@ -47,8 +47,8 @@ def narcissist_bot(search_string, numbersOfTweets):
 
 def retweet_bot(search_string, numbersOfTweets):
     '''
-    Searchs on main user time line for any tweet containig the key word: search_string and retweets it in to favorites, also the number of times is limited by numbersOfTweets
-    You can put your name as search_string to like any tweet containig your name
+    Search on main user time line for any tweet containig the key word: search_string and retweets it in to favorites, also the number of items is limited by numbersOfTweets
+    You can put your name as search_string to retweet any tweet containig your name
     '''
     for tweet in tweepy.Cursor(api.search, search_string).items(numbersOfTweets):
         try:
