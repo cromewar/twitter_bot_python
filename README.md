@@ -1,4 +1,4 @@
-# Twitter_bot_python**
+# Twitter_bot_python
 
 A python Bot using **tweepy** library.
 
